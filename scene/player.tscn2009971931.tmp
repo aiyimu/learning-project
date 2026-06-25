@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://d3bn2erdspcdn"]
+
+[ext_resource type="Texture2D" uid="uid://dmo67yk3upoeg" path="res://icon.svg" id="1_ct4mp"]
+[ext_resource type="Script" uid="uid://cqa6nia08we4r" path="res://script/state_machine/state_machine.gd" id="2_s4jxa"]
+[ext_resource type="Script" uid="uid://6go3v82lgfnd" path="res://script/states/idle_state.gd" id="3_oh5ij"]
+[ext_resource type="Script" uid="uid://08ncl8vt00q7" path="res://script/player.gd" id="5_player"]
+[ext_resource type="Script" uid="uid://c5dsgbud2oj8j" path="res://script/states/left_state.gd" id="6_hp4bs"]
+[ext_resource type="Script" uid="uid://bsdpmbmjf20wm" path="res://script/states/up_state.gd" id="7_g2vtq"]
+[ext_resource type="Script" uid="uid://d2k6m6t8yi6nb" path="res://script/states/right_state.gd" id="7_hp4bs"]
+[ext_resource type="Script" uid="uid://c5b4ctfrgt7a4" path="res://script/states/down_state.gd" id="8_2fvbb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2vtq"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D" unique_id=1640337302]
+position = Vector2(481, 308)
+script = ExtResource("5_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1997620982]
+texture = ExtResource("1_ct4mp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1529795800]
+shape = SubResource("RectangleShape2D_g2vtq")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1073958858 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_s4jxa")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://cqa6nia08we4r"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1437629336 node_paths=PackedStringArray("left_state", "right_state")]
+script = ExtResource("3_oh5ij")
+left_state = NodePath("../Left")
+right_state = NodePath("../Right")
+metadata/_custom_type_script = "uid://b4lfu6gpqsvng"
+
+[node name="Left" type="Node" parent="StateMachine" unique_id=862834518 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_hp4bs")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://b4lfu6gpqsvng"
+
+[node name="Right" type="Node" parent="StateMachine" unique_id=1355265403 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("7_hp4bs")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://b4lfu6gpqsvng"
+
+[node name="up" type="Node" parent="StateMachine" unique_id=660634868 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("7_g2vtq")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://b4lfu6gpqsvng"
+
+[node name="down" type="Node" parent="StateMachine" unique_id=1002143688 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("8_2fvbb")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://b4lfu6gpqsvng"
