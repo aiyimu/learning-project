@@ -32,6 +32,7 @@ func physics_update(_delta: float) -> void:
 	# 重力
 	character.velocity.y += character.gravity * _delta
 	character.move_and_slide()
+	character.push_crates(character.velocity)
 
 	# 动画切换：fall（单次）播放完后切换到 fall_loop（循环）
 	if animated_sprite.animation == "fall" and not animated_sprite.is_playing():

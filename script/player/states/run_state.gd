@@ -54,3 +54,4 @@ func physics_update(_delta: float) -> void:
 	# 重力
 	character.velocity.y += character.gravity * _delta
 	character.move_and_slide()
+	character.push_crates(character.velocity)

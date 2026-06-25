@@ -15,16 +15,16 @@ func enter_state() -> void:
 	if hitbox_shape:
 		hitbox_shape.position.x = 30 * direction
 
-	character.attack_hitbox.monitoring = true
+	character.attack_hitbox.activate()
 
 func exit_state() -> void:
-	# ★ 离开攻击状态时关闭检测
-	character.attack_hitbox.monitoring = false
+	# 离开攻击状态时关闭检测
+	character.attack_hitbox.deactivate()
 
 func update(_delta: float) -> void:
 	if not animated_sprite.is_playing():
 		# 攻击动画结束，关闭 Hitbox（安全冗余）
-		character.attack_hitbox.monitoring = false
+		character.attack_hitbox.deactivate()
 
 		if not character.is_on_floor():
 			switch_state.emit(fall_state)
