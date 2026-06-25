@@ -2,13 +2,13 @@
 
 [ext_resource type="SpriteFrames" uid="uid://b5vp2hu2wrcy1" path="res://assets/sprites/male_hero/male_hero_sprite_frames.tres" id="2_g2vtq"]
 [ext_resource type="Script" uid="uid://cqa6nia08we4r" path="res://script/state_machine/state_machine.gd" id="2_s4jxa"]
-[ext_resource type="Script" uid="uid://6go3v82lgfnd" path="res://script/player/states/idle_state.gd" id="3_oh5ij"]
+[ext_resource type="Script" uid="uid://6go3v82lgfnd" path="res://script/states/idle_state.gd" id="3_oh5ij"]
 [ext_resource type="Script" uid="uid://08ncl8vt00q7" path="res://script/player/player.gd" id="5_player"]
-[ext_resource type="Script" uid="uid://rv3jbcdjv2f1" path="res://script/player/states/walk_state.gd" id="6_run"]
-[ext_resource type="Script" uid="uid://v4uvjd3uxc7y" path="res://script/player/states/jump_state.gd" id="7_jump"]
-[ext_resource type="Script" uid="uid://bxskms7wxg6lv" path="res://script/player/states/fall_state.gd" id="8_fall"]
-[ext_resource type="Script" uid="uid://cipi5rxo1opc3" path="res://script/player/states/combo_1_state.gd" id="9_2fvbb"]
-[ext_resource type="Script" uid="uid://bs08mr4luyakv" path="res://script/player/states/run_state.gd" id="9_run"]
+[ext_resource type="Script" uid="uid://rv3jbcdjv2f1" path="res://script/states/walk_state.gd" id="6_run"]
+[ext_resource type="Script" uid="uid://v4uvjd3uxc7y" path="res://script/states/jump_state.gd" id="7_jump"]
+[ext_resource type="Script" uid="uid://bxskms7wxg6lv" path="res://script/states/fall_state.gd" id="8_fall"]
+[ext_resource type="Script" uid="uid://cipi5rxo1opc3" path="res://script/states/combo_1_state.gd" id="9_2fvbb"]
+[ext_resource type="Script" uid="uid://bs08mr4luyakv" path="res://script/states/run_state.gd" id="9_run"]
 [ext_resource type="Script" uid="uid://1xhtanht5x" path="res://script/hitbox/attack_hitbox.gd" id="10_hitbox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2vtq"]
@@ -90,7 +90,7 @@ zoom = Vector2(3, 3)
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=1769605838]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 2
 monitoring = false
 script = ExtResource("10_hitbox")
 

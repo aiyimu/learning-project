@@ -39,15 +39,14 @@ func update(_delta: float) -> void:
 	if Input.get_axis("p_left", "p_right") == 0:
 		switch_state.emit(idle_state)
 
+# player.gd 或各移动状态 (walk_state.gd, run_state.gd)
 func physics_update(_delta: float) -> void:
 	var direction := Input.get_axis("p_left", "p_right")
 
 	if direction != 0:
 		character.velocity.x = direction * speed
-		animated_sprite.scale.x = direction
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, speed)
 
-	# 重力
 	character.velocity.y += character.gravity * _delta
 	character.move_and_slide()
